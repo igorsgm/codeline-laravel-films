@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Country;
-use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class CountryRepository

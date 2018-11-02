@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Film;
-use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class FilmRepository
