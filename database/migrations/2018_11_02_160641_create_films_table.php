@@ -23,9 +23,7 @@ class CreateFilmsTable extends Migration
             $table->float('ticket_price', 4, 2);
 
             $table->unsignedInteger('country_id')->nullable();
-            $table->foreign('country_id')->references('id')->on('countries')
-                ->onUpdate('cascade')->onDelete('set null');
-
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->string('image_path');
 
             $table->timestamps();

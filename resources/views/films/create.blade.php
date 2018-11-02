@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>
-        Film
+        Create new Film
     </h1>
 @stop
 
@@ -15,7 +15,7 @@
 
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'films.store']) !!}
+                    {!! Form::open(['route' => 'films.store', 'files' => true]) !!}
 
                     @include('films.fields')
 

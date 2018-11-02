@@ -3,20 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FilmRequest;
-use App\Repositories\FilmRepository;
+use App\Services\FilmService;
 use Flash;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Prettus\Repository\Criteria\RequestCriteria;
+use Illuminate\Routing\Redirector;
+use Prettus\Validator\Exceptions\ValidatorException;
 use Response;
 
+/**
+ * Class FilmController
+ * @package App\Http\Controllers
+ */
 class FilmController extends Controller
 {
-    /** @var  FilmRepository */
-    private $filmRepository;
+    /**
+     * @var FilmService
+     */
+    private $filmService;
 
-    public function __construct(FilmRepository $filmRepo)
+    /**
+     * FilmController constructor.
+     *
+     * @param FilmService $filmService
+     */
+    public function __construct(FilmService $filmService)
     {
-        $this->filmRepository = $filmRepo;
+        $this->filmService = $filmService;
     }
 
     /**
@@ -29,8 +43,7 @@ class FilmController extends Controller
      */
     public function index(Request $request)
     {
-        $this->filmRepository->pushCriteria(new RequestCriteria($request));
-        $films = $this->filmRepository->all();
+        $films = $this->filmService->all($request);
 
         return view('films.index', compact('films'));
     }
@@ -42,7 +55,9 @@ class FilmController extends Controller
      */
     public function create()
     {
-        return view('films.create');
+        $countries = $this->filmService->countryRepository->pluck('name');
+
+        return view('films.create', compact('countries'));
     }
 
     /**
@@ -50,18 +65,19 @@ class FilmController extends Controller
      *
      * @param FilmRequest $request
      *
-     * @return Response
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @return RedirectResponse|Redirector|Response
+     * @throws ValidatorException
+     * @throws FileNotFoundException
      */
     public function store(FilmRequest $request)
     {
-        $input = $request->all();
+        if ($film = $this->filmService->store($request)) {
+            Flash::success(__('responses.success.create'));
 
-        $film = $this->filmRepository->create($input);
+            return redirect(route('films.index'));
+        }
 
-        Flash::success('Film saved successfully.');
-
-        return redirect(route('films.index'));
+        return $this->filmService->filmNotFound();
     }
 
     /**
@@ -69,19 +85,16 @@ class FilmController extends Controller
      *
      * @param  int $id
      *
-     * @return Response
+     * @return RedirectResponse|Redirector|Response
+     * @throws \Exception
      */
     public function show($id)
     {
-        $film = $this->filmRepository->findWithoutFail($id);
-
-        if (empty($film)) {
-            Flash::error('Film not found');
-
-            return redirect(route('films.index'));
+        if ($film = $this->filmService->find($id)) {
+            return view('films.show', compact('film'));
         }
 
-        return view('films.show')->with('film', $film);
+        return $this->filmService->filmNotFound();
     }
 
     /**
@@ -89,19 +102,19 @@ class FilmController extends Controller
      *
      * @param  int $id
      *
-     * @return Response
+     * @return RedirectResponse|Redirector|Response
+     * @throws \Exception
      */
     public function edit($id)
     {
-        $film = $this->filmRepository->findWithoutFail($id);
+        if ($film = $this->filmService->find($id)) {
+            $countries = $this->filmService->countryRepository->pluck('name');
 
-        if (empty($film)) {
-            Flash::error('Film not found');
-
-            return redirect(route('films.index'));
+            return view('films.edit', compact('film', 'countries'));
         }
 
-        return view('films.edit')->with('film', $film);
+        return $this->filmService->filmNotFound();
+
     }
 
     /**
@@ -110,24 +123,21 @@ class FilmController extends Controller
      * @param  int        $id
      * @param FilmRequest $request
      *
-     * @return Response
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @return RedirectResponse|Redirector|Response
+     * @throws ValidatorException
+     * @throws FileNotFoundException
+     * @throws \Exception
      */
     public function update($id, FilmRequest $request)
     {
-        $film = $this->filmRepository->findWithoutFail($id);
-
-        if (empty($film)) {
-            Flash::error('Film not found');
+        if ($film = $this->filmService->update($request, $id)) {
+            Flash::success(__('responses.success.update'));
 
             return redirect(route('films.index'));
         }
 
-        $film = $this->filmRepository->update($request->all(), $id);
+        return $this->filmService->filmNotFound();
 
-        Flash::success('Film updated successfully.');
-
-        return redirect(route('films.index'));
     }
 
     /**
@@ -135,22 +145,17 @@ class FilmController extends Controller
      *
      * @param  int $id
      *
-     * @return Response
+     * @return RedirectResponse|Redirector|Response
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        $film = $this->filmRepository->findWithoutFail($id);
-
-        if (empty($film)) {
-            Flash::error('Film not found');
+        if ($film = $this->filmService->destroy($id)) {
+            Flash::success(__('responses.success.destroy'));
 
             return redirect(route('films.index'));
         }
 
-        $this->filmRepository->delete($id);
-
-        Flash::success('Film deleted successfully.');
-
-        return redirect(route('films.index'));
+        return $this->filmService->filmNotFound();
     }
 }

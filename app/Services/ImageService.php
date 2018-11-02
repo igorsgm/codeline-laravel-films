@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\FilmRequest;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\UploadedFile;
 use Request;
@@ -10,7 +11,7 @@ use Symfony\Component\HttpFoundation\File\Exception\CannotWriteFileException;
 class ImageService
 {
     /**
-     * @param Request $request
+     * @param Request|FilmRequest $request
      *
      * @return string
      * @throws FileNotFoundException
@@ -37,11 +38,11 @@ class ImageService
     {
         try {
             $fileName = $file->getClientOriginalName();
-            $file->move(public_path('uploadedimages/'), $fileName);
+            $file->move(public_path('/uploadedimages/'), $fileName);
         } catch (\Exception $exception) {
             throw new CannotWriteFileException('Image could not be saved', 422);
         }
 
-        return $fileName;
+        return '/uploadedimages/' . $fileName;
     }
 }

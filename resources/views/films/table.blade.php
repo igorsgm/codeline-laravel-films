@@ -3,7 +3,6 @@
     <tr>
         <th>Name</th>
         <th>Slug</th>
-        <th>Description</th>
         <th>Release Date</th>
         <th>Rating</th>
         <th>Ticket Price</th>
@@ -17,7 +16,6 @@
         <tr>
             <td>{!! $film->name !!}</td>
             <td>{!! $film->slug !!}</td>
-            <td>{!! $film->description !!}</td>
             <td>{!! $film->release_date !!}</td>
             <td>{!! $film->rating !!}</td>
             <td>{!! $film->ticket_price !!}</td>
@@ -28,7 +26,7 @@
                 <div class='btn-group'>
                     <a href="{!! route('films.show', [$film->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     <a href="{!! route('films.edit', [$film->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Tem certeza que deseja deleter este registro?')"]) !!}
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                 </div>
                 {!! Form::close() !!}
             </td>
