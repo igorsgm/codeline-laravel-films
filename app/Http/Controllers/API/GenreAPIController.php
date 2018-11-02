@@ -28,7 +28,7 @@ class GenreAPIController extends Controller
     }
 
     /**
-     * Display a listing of the Genre.
+     * Display a listing of genres.
      * GET|HEAD /genres
      *
      * @param Request $request
