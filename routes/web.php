@@ -17,3 +17,4 @@ Route::get('/', 'FilmController@index')->name('films');
 
 Route::resource('films', 'FilmController');
 Route::resource('genres', 'GenreController', ['only' => ['index', 'show']]);
+Route::resource('countries', 'CountryController', ['only' => ['index', 'show']]);

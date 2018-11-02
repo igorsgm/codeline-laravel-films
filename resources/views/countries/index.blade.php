@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Codeline LaravelFilms - Genres')
+@section('title', 'Codeline LaravelFilms - Countries')
 
 @section('content_header')
-    <h1 class="pull-left">Genres</h1>
+    <h1 class="pull-left">Countries</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                @include('genres.table')
+                @include('countries.table')
             </div>
         </div>
         <div class="text-center">

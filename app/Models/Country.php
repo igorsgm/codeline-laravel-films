@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Country
  * @package App\Models
  *
- * @property string code
- * @property string name
+ * @property \Illuminate\Database\Eloquent\Collection films
+ * @property string                                   code
+ * @property string                                   name
  */
 class Country extends Model
 {
@@ -21,11 +22,10 @@ class Country extends Model
     public $table = 'countries';
 
     /**
-     * @var array
-     */
-    public $fillable = [
-        'code',
-        'name'
-    ];
-
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function films()
+    {
+        return $this->hasMany(Film::class, 'country_id', 'id');
+    }
 }
