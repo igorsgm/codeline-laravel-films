@@ -14,3 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'FilmController@index')->name('films');
+
+Route::resource('films', 'FilmController');
+Route::resource('genres', 'GenreController', ['only' => ['index', 'show']]);
