@@ -18,11 +18,11 @@ class ImageService
      */
     public function handleImage($request)
     {
-        if ($request->hasFile('image_file')) {
-            return $this->saveImageFile($request->file('image_file'));
+        if ($request->hasFile('image_path')) {
+            return $this->saveImageFile($request->file('image_path'));
         }
 
-        return $request->get('image_file');
+        return $request->get('image_path');
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Film;
 
 class FilmRequest extends FormRequest
 {
@@ -25,7 +24,16 @@ class FilmRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        $imageValidationRule = $this->method() == "POST" ? "required" : "";
+
+        return [
+            'name'         => 'required|string',
+            'description'  => 'required',
+            'rating'       => 'required|numeric|min:1|max:5',
+            'ticket_price' => 'required|numeric|max:9999.99',
+            'country_id'   => 'required|numeric',
+            'image_path'   => $imageValidationRule
+        ];
     }
 
     /**
@@ -35,6 +43,13 @@ class FilmRequest extends FormRequest
      */
     public function attributes()
     {
-        return [];
+        return [
+            'name'         => 'Name',
+            'description'  => 'Description',
+            'rating'       => 'Rating',
+            'ticket_price' => 'Ticket Price (USD)',
+            'country_id'   => 'Country',
+            'image_path'   => 'Image'
+        ];
     }
 }

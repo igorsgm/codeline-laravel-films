@@ -1,19 +1,7 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $film->id !!}</p>
-</div>
-
 <!-- Name Field -->
 <div class="form-group">
     {!! Form::label('name', 'Name:') !!}
     <p>{!! $film->name !!}</p>
-</div>
-
-<!-- Slug Field -->
-<div class="form-group">
-    {!! Form::label('slug', 'Slug:') !!}
-    <p>{!! $film->slug !!}</p>
 </div>
 
 <!-- Description Field -->
@@ -36,31 +24,19 @@
 
 <!-- Ticket Price Field -->
 <div class="form-group">
-    {!! Form::label('ticket_price', 'Ticket Price:') !!}
+    {!! Form::label('ticket_price', 'Ticket Price (USD):') !!}
     <p>{!! $film->ticket_price !!}</p>
 </div>
 
-<!-- Country Id Field -->
+<!-- Country Field -->
 <div class="form-group">
-    {!! Form::label('country_id', 'Country Id:') !!}
-    <p>{!! $film->country_id !!}</p>
+    {!! Form::label('country_id', 'Country:') !!}
+    <p>{!! $film->country->name !!}</p>
 </div>
 
-<!-- Image Path Field -->
+<!-- Genres-->
 <div class="form-group">
-    {!! Form::label('image_path', 'Image Path:') !!}
-    <p>{!! $film->image_path !!}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $film->created_at !!}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $film->updated_at !!}</p>
+    {!! Form::label('genres', 'Genres:') !!}
+    <p>{!! implode(', ', $film->genres->pluck('name')->toArray()) !!}</p>
 </div>
 

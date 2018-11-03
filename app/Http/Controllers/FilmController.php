@@ -55,9 +55,7 @@ class FilmController extends Controller
      */
     public function create()
     {
-        $countries = $this->filmService->countryRepository->pluck('name');
-
-        return view('films.create', compact('countries'));
+        return view('films.create', $this->filmService->getViewSelectsData());
     }
 
     /**
@@ -91,7 +89,10 @@ class FilmController extends Controller
     public function show($id)
     {
         if ($film = $this->filmService->find($id)) {
-            return view('films.show', compact('film'));
+            $data = $this->filmService->getViewSelectsData();
+            $data['film'] = $film;
+
+            return view('films.show', $data);
         }
 
         return $this->filmService->filmNotFound();
@@ -108,9 +109,10 @@ class FilmController extends Controller
     public function edit($id)
     {
         if ($film = $this->filmService->find($id)) {
-            $countries = $this->filmService->countryRepository->pluck('name');
+            $data = $this->filmService->getViewSelectsData();
+            $data['film'] = $film;
 
-            return view('films.edit', compact('film', 'countries'));
+            return view('films.edit', $data);
         }
 
         return $this->filmService->filmNotFound();

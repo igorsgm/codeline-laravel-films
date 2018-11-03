@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1>
-        Edit Film
+        Edit - {{$film->name}}
     </h1>
 @stop
 
@@ -13,11 +13,18 @@
     <div class="box box-primary">
         <div class="box-body">
             <div class="row">
-                {!! Form::model($film, ['route' => ['films.update', $film->id], 'method' => 'patch', 'files' => true]) !!}
+                <div class="col-sm-4">
+                    <img src="{{$film->image_path}}" class="film-image">
+                </div>
 
-                @include('films.fields')
+                <div class="col-sm-8">
+                    {!! Form::model($film, ['route' => ['films.update', $film->id], 'method' => 'patch', 'files' => true]) !!}
 
-                {!! Form::close() !!}
+                    @include('films.fields')
+
+                    {!! Form::close() !!}
+                </div>
+
             </div>
         </div>
     </div>

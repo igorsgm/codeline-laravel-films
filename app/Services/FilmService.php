@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Http\Requests\FilmRequest;
 use App\Repositories\CountryRepository;
 use App\Repositories\FilmRepository;
+use App\Repositories\GenreRepository;
 use Flash;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\RedirectResponse;
@@ -12,20 +13,29 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Prettus\Repository\Criteria\RequestCriteria;
 
+//use App\Models\Film;
+
 class FilmService
 {
     /**
      * @var ImageService
      */
     private $imageService;
+
     /**
      * @var FilmRepository
      */
     private $filmRepository;
+
     /**
      * @var CountryRepository
      */
     public $countryRepository;
+
+    /**
+     * @var GenreRepository
+     */
+    public $genreRepository;
 
     /**
      * FilmService constructor.
@@ -33,15 +43,18 @@ class FilmService
      * @param CountryRepository $countryRepository
      * @param FilmRepository    $filmRepository
      * @param ImageService      $imageService
+     * @param GenreRepository   $genreRepository
      */
     public function __construct(
         CountryRepository $countryRepository,
         FilmRepository $filmRepository,
-        ImageService $imageService
+        ImageService $imageService,
+        GenreRepository $genreRepository
     ) {
         $this->filmRepository    = $filmRepository;
         $this->imageService      = $imageService;
         $this->countryRepository = $countryRepository;
+        $this->genreRepository   = $genreRepository;
     }
 
     /**
@@ -85,7 +98,10 @@ class FilmService
     {
         $data = $this->handleFilmData($request);
 
-        return $this->filmRepository->create($data);
+        $film = $this->filmRepository->create($data);
+        $film->genres()->sync($data['genres']);
+
+        return $film;
     }
 
     /**
@@ -102,7 +118,16 @@ class FilmService
     {
         $data = $this->handleFilmData($request);
 
-        return $this->filmRepository->update($data, $id);
+        if (empty($data['image_path'])) {
+            unset($data['image_path']);
+        }
+
+        /** @var /Models/Film $film */
+        $film = $this->filmRepository->update($data, $id);
+
+        $film->genres()->sync($data['genres']);
+
+        return $film;
     }
 
     /**
@@ -144,5 +169,17 @@ class FilmService
         Flash::error(__('responses.error.item_not_found'));
 
         return redirect(route('films.index'));
+    }
+
+    /**
+     * Retrieves necessaries select datas to populate in view
+     * @return array
+     */
+    public function getViewSelectsData()
+    {
+        $countries = $this->countryRepository->pluck('name', 'id');
+        $genres    = $this->genreRepository->pluck('name', 'id');
+
+        return compact('countries', 'genres');
     }
 }

@@ -44,6 +44,16 @@ class Film extends Model
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'country',
+        'genres'
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function country()
@@ -56,6 +66,6 @@ class Film extends Model
      **/
     public function genres()
     {
-        return $this->belongsToMany(Genre::class, 'films_genres', 'film_id', 'genre_id');
+        return $this->belongsToMany(Genre::class, 'films_genres', 'film_id', 'genre_id')->withTimestamps();
     }
 }
