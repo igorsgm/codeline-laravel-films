@@ -1,14 +1,44 @@
-
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.film-image {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.film-image-cover {
+  max-height: 400px;
+  max-width: 400px;
+}
+
+.panel.panel--styled {
+  background: #F4F2F3;
+}
+
+.panelTop {
+  padding: 30px;
+}
+
+.panelBottom {
+  border-top: 1px solid #e7e7e7;
+  padding-top: 20px;
+}
+
+span.itemPrice {
+  font-size: 24px;
+}
+
+.star-rating {
+  font-size: 1.5em;
+}
+
+span.star-rating.fa.fa-star.checked {
+  color: orange;
 }

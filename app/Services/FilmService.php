@@ -69,7 +69,7 @@ class FilmService
     {
         $this->filmRepository->pushCriteria(new RequestCriteria($request));
 
-        return $this->filmRepository->all();
+        return $this->filmRepository->paginate(1);
     }
 
     /**
