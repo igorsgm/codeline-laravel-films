@@ -39,15 +39,11 @@
 
                                     <div class="col-md-12 panelBottom">
                                         <div class="col-md-4 text-center">
-                                            <a href="{!! route('films.edit', [$film->id]) !!}" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-info-sign"></span> More info</a>
+                                            <a href="{!! route('films.show', [$film->id]) !!}" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-info-sign"></span> More info</a>
+                                            <a href="{!! route('films.edit', [$film->id]) !!}" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                         </div>
                                         <div class="col-md-4 text-left">
                                             <h5>Ticket Price <span class="itemPrice">$ {{$film->ticket_price}}</span></h5>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="stars">
-                                                <div id="stars" class="starrr"></div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
