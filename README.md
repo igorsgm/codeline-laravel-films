@@ -22,7 +22,7 @@ After doing this, execute the following commands
 ```
 php artisan key:generate
 
-php artisan db:seed
+php artisan migrate --seed
 ```
 
 Now you are ready to access the application:
