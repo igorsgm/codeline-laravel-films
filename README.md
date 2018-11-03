@@ -40,7 +40,9 @@ php artisan route:list
 ```
 
 You can also use [Postman](https://www.getpostman.com/) ( a complete API development environment, for API developers) by importing [postman_collection.json](https://github.com/igorsgm/codeline-laravel-films/blob/master/postman_collection.json) after downloading the program.
-By doing this, you can see the list of routes in api and test their operation. 
+By doing this, you can see the list of routes in api and test their operation.
+
+![API Routes](https://raw.githubusercontent.com/igorsgm/codeline-laravel-films/master/CodelineLaravelFilms-routes.png?token=ANeas7xwF74vybkffQxsWTGCJ4WF8E5tks5b5mvfwA%3D%3D) 
 
 ## Built With
 
