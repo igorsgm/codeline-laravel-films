@@ -50,7 +50,8 @@ class Film extends Model
      */
     protected $with = [
         'country',
-        'genres'
+        'genres',
+        'comments'
     ];
 
     /**
@@ -67,5 +68,13 @@ class Film extends Model
     public function genres()
     {
         return $this->belongsToMany(Genre::class, 'films_genres', 'film_id', 'genre_id')->withTimestamps();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
