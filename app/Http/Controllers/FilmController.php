@@ -81,14 +81,14 @@ class FilmController extends Controller
     /**
      * Display the specified Film.
      *
-     * @param  int $id
+     * @param  int|string $id
      *
      * @return RedirectResponse|Redirector|Response
      * @throws \Exception
      */
-    public function show($id)
+    public function show($slug)
     {
-        if ($film = $this->filmService->find($id)) {
+        if ($film = $this->filmService->findBySlug($slug)) {
             $data = $this->filmService->getViewSelectsData();
             $data['film'] = $film;
 

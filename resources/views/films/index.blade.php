@@ -39,7 +39,7 @@
 
                                     <div class="col-md-12 panelBottom">
                                         <div class="col-md-4 text-center">
-                                            <a href="{!! route('films.show', [$film->id]) !!}" class="btn btn-lg btn-flat btn-primary"><span class="glyphicon glyphicon-info-sign"></span> More info</a>
+                                            <a href="{!! route('films.show', [$film->slug]) !!}" class="btn btn-lg btn-flat btn-primary"><span class="glyphicon glyphicon-info-sign"></span> More info</a>
                                             <a href="{!! route('films.edit', [$film->id]) !!}" class="btn btn-lg btn-flat btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                         </div>
                                         <div class="col-md-4 text-left">

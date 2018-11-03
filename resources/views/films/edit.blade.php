@@ -13,11 +13,11 @@
     <div class="box box-primary">
         <div class="box-body">
             <div class="row">
-                <div class="col-sm-4">
-                    <img src="{{$film->image_path}}" class="film-image">
+                <div class="col-md-3">
+                    <img class="film-image-cover" src="{{url($film->image_path)}}" alt=""/>
                 </div>
 
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                     {!! Form::model($film, ['route' => ['films.update', $film->id], 'method' => 'patch', 'files' => true]) !!}
 
                     @include('films.fields')

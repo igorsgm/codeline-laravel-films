@@ -69,11 +69,11 @@ class FilmService
     {
         $this->filmRepository->pushCriteria(new RequestCriteria($request));
 
-        return $this->filmRepository->paginate(1);
+        return $this->filmRepository->orderBy('created_at', 'desc')->paginate(1);
     }
 
     /**
-     * Data of a Model by primary key
+     * Data of a Film by primary key
      *
      * @param int|string $id
      *
@@ -83,6 +83,19 @@ class FilmService
     public function find($id)
     {
         return $this->filmRepository->findWithoutFail($id);
+    }
+
+    /**
+     * Data of a Film by slug
+     *
+     * @param string $slug
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function findBySlug($slug)
+    {
+        return $this->filmRepository->findByField(['slug' => $slug])->first();
     }
 
     /**
