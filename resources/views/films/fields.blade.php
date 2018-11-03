@@ -37,13 +37,13 @@
         </div>
 
         <!-- Rating Field -->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
             {!! Form::label('rating', 'Rating:') !!}
-            {!! Form::number('rating', null, ['class' => 'form-control']) !!}
+            {!! Form::select('rating', ['1' => '1 stars', '2' => '2 stars', '3' => '3 stars', '4' => '4 stars', '5' => '5 stars'], old('rating') ? old('rating') : null, ['class' => 'form-control select2']) !!}
         </div>
 
         <!-- Ticket Price Field -->
-        <div class="form-group col-sm-2">
+        <div class="form-group col-sm-3">
             {!! Form::label('ticket_price', 'Ticket Price (USD):') !!}
             {!! Form::number('ticket_price', null, ['class' => 'form-control']) !!}
         </div>

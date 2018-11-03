@@ -26,7 +26,7 @@
                                             <img class="film-image-cover" src="{{url($film->image_path)}}" alt=""/>
                                         </div>
                                         <div class="col-md-8">
-                                            <h2>{{$film->name}} <span class="film-year">({{$film->release_date->format('Y')}})</span></h2>
+                                            <h2>{{$film->name}} <span class="film-year">({{Carbon\Carbon::parse($film->release_date)->format('Y')}})</span></h2>
                                             <div>
                                                 @for($i = 1; $i <= 5; $i++)
                                                     <span class="star-rating fa fa-star {{ $film->rating >= $i  ? 'checked' : ''}}"></span>
@@ -43,7 +43,7 @@
                                             <a href="{!! route('films.edit', [$film->id]) !!}" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                         </div>
                                         <div class="col-md-4 text-left">
-                                            <h5>Ticket Price <span class="itemPrice">$ {{$film->ticket_price}}</span></h5>
+                                            <h4>Ticket Price <span class="itemPrice">$ {{$film->ticket_price}}</span></h4>
                                         </div>
                                     </div>
                                 </div>

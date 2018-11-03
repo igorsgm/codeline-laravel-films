@@ -43,12 +43,6 @@ class Film extends Model
         'image_path'
     ];
 
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'release_date',
-    ];
-
     /**
      * The relations to eager load on every query.
      *
