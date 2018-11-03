@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "43944aec-c5d5-42ae-9eae-ad6c959750b0",
+		"name": "Codeline Laravel Films",
+		"description": "Postman Collection of API's route",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Films",
+			"item": [
+				{
+					"name": "https://codeline-laravel-films.dev/api/films",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"hit\"\n}"
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/films",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"films"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://codeline-laravel-films.dev/api/films/{slug}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"hit\"\n}"
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/films/harry-potter",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"films",
+								"harry-potter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://codeline-laravel-films.dev/api/films/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Lord of the Rings",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Nisi adipisci deserunt recusandae Qui tempore ullam sit illo commodo sunt cillum",
+									"type": "text"
+								},
+								{
+									"key": "release_date",
+									"value": "2002-07-22",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "ticket_price",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "genres",
+									"value": "1,2,3",
+									"type": "text"
+								},
+								{
+									"key": "image_path",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/films",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"films"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://codeline-laravel-films.dev/api/films/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Lord of the Rings The Two Towers\",\n\t\"description\": \"Nisi adipisci deserunt recusandae Qui tempore ullam sit illo commodo sunt cillum\",\n\t\"release_date\": \"2002-07-22\",\n\t\"rating\": \"4\",\n\t\"ticket_price\": \"10\",\n\t\"country_id\": \"2\",\n\t\"genres\": [1,2,3,4,5,6]\n}"
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/films/1",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"films",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://codeline-laravel-films.dev/api/films/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/films/1",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"films",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Countries",
+			"item": [
+				{
+					"name": "https://codeline-laravel-films.dev/api/countries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"hit\"\n}"
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/countries",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"countries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://codeline-laravel-films.dev/api/countries/id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"hit\"\n}"
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/countries/1",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"countries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genres",
+			"item": [
+				{
+					"name": "https://codeline-laravel-films.dev/api/genres",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"hit\"\n}"
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/genres",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://codeline-laravel-films.dev/api/genres/id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"hit\"\n}"
+						},
+						"url": {
+							"raw": "https://codeline-laravel-films.dev/api/genres/1",
+							"protocol": "https",
+							"host": [
+								"codeline-laravel-films",
+								"dev"
+							],
+							"path": [
+								"api",
+								"genres",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

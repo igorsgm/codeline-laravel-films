@@ -28,7 +28,7 @@ class FilmRequest extends BaseRequest
             'name'         => 'required|string',
             'description'  => 'required',
             'rating'       => 'required|numeric|min:1|max:5',
-            'ticket_price' => 'required|numeric|max:9999.99',
+            'ticket_price' => 'required|numeric|max:99.99',
             'country_id'   => 'required|numeric',
             'image_path'   => $imageValidationRule
         ];

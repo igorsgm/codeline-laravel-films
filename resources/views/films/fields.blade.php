@@ -45,7 +45,7 @@
         <!-- Ticket Price Field -->
         <div class="form-group col-sm-3">
             {!! Form::label('ticket_price', 'Ticket Price (USD):') !!}
-            {!! Form::number('ticket_price', null, ['class' => 'form-control']) !!}
+            {!! Form::number('ticket_price', null, ['class' => 'form-control', 'min' => 1, 'max' => '99']) !!}
         </div>
     </div>
 
