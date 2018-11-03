@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Criteria\LimitOffsetCriteria;
 use App\Http\Requests\FilmRequest;
 use App\Repositories\CountryRepository;
 use App\Repositories\FilmRepository;
 use App\Repositories\GenreRepository;
+use Exception;
 use Flash;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\RedirectResponse;
@@ -68,6 +70,7 @@ class FilmService
     public function all(Request $request)
     {
         $this->filmRepository->pushCriteria(new RequestCriteria($request));
+        $this->filmRepository->pushCriteria(new LimitOffsetCriteria($request));
 
         return $this->filmRepository->orderBy('created_at', 'desc')->paginate(1);
     }
@@ -95,7 +98,11 @@ class FilmService
      */
     public function findBySlug($slug)
     {
-        return $this->filmRepository->findByField(['slug' => $slug])->first();
+        try {
+            return $this->filmRepository->findByField(['slug' => $slug])->first();
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     /**
@@ -169,6 +176,10 @@ class FilmService
         $data               = $request->all();
         $data['image_path'] = $this->imageService->handleImage($request);
         $data['slug']       = str_slug($data['name'], '-');
+
+        if (!empty($data['genres']) && is_string($data['genres'])) {
+            $data['genres'] = explode(',', $data['genres']);
+        }
 
         return $data;
     }

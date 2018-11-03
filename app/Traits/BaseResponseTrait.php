@@ -5,6 +5,7 @@ namespace App\Traits;
 use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Http\ResponseTrait;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Trait ResponseTrait
@@ -40,7 +41,8 @@ trait BaseResponseTrait
 
         $result = !empty($resultCallableMethod) ? $result->{$resultCallableMethod}() : $result;
 
-        $body = $sendWithArrayStructure ? $this->makeResponseArray(true, $result, $successMessage) : $result;
+        $body = ($sendWithArrayStructure && !($result instanceof LengthAwarePaginator)) ?
+            $this->makeResponseArray(true, $result, $successMessage) : $result;
 
         return response()->json($body, $status);
     }
