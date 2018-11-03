@@ -40,17 +40,8 @@
                     @endif
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox" name="remember"> {{ trans('adminlte::adminlte.remember_me') }}
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit"
-                                class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('adminlte::adminlte.sign_in') }}</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -66,6 +57,10 @@
                     >{{ trans('adminlte::adminlte.register_a_new_membership') }}</a>
                 @endif
             </div>
+        </div>
+        <br>
+        <div class="login-box-body">
+            <a href="{{ route('films') }}" class="btn btn-warning btn-flat btn-block">Home</a>
         </div>
         <!-- /.login-box-body -->
     </div><!-- /.login-box -->

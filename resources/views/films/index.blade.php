@@ -39,8 +39,8 @@
 
                                     <div class="col-md-12 panelBottom">
                                         <div class="col-md-4 text-center">
-                                            <a href="{!! route('films.show', [$film->id]) !!}" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-info-sign"></span> More info</a>
-                                            <a href="{!! route('films.edit', [$film->id]) !!}" class="btn btn-lg btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                                            <a href="{!! route('films.show', [$film->id]) !!}" class="btn btn-lg btn-flat btn-primary"><span class="glyphicon glyphicon-info-sign"></span> More info</a>
+                                            <a href="{!! route('films.edit', [$film->id]) !!}" class="btn btn-lg btn-flat btn-warning"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                                         </div>
                                         <div class="col-md-4 text-left">
                                             <h4>Ticket Price <span class="itemPrice">$ {{$film->ticket_price}}</span></h4>
@@ -53,7 +53,7 @@
                 </div>
 
                 <h1 class="pull-left">
-                    <a class="btn btn-lg btn-success" href="{!! route('films.create') !!}">Create new film</a>
+                    <a class="btn btn-lg btn-success btn-flat" href="{!! route('films.create') !!}">Create new film</a>
                 </h1>
                 <div class="pull-right">
                     {!! $films->links() !!}
