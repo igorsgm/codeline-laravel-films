@@ -37,7 +37,7 @@ class FilmsTableSeeder extends Seeder
                 'slug'         => 'les-miserables',
                 'description'  => 'In 19th-century France, Jean Valjean, who for decades has been hunted by the ruthless policeman Javert after breaking parole, agrees to care for a factory worker\'s daughter. The decision changes their lives forever. If you love Les Mis the stage musical, my guess is you will love what Hooper and his bustling company have done. But when you hear "Master of the House" and you think of the Seinfeld episode with Elaine\'s gruff dad belting the tune before you think of those shifty innkeepers the Thénardiers, then you may want to steer clear of this grand endeavor.',
                 'release_date' => '2012-08-15',
-                'rating'       => '5',
+                'rating'       => '2',
                 'ticket_price' => '15',
                 'country_id'   => '226',
                 'image_path'   => '/uploadedimages/les_miserables.jpg'
