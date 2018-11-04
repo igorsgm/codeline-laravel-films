@@ -51,4 +51,4 @@ By doing this, you can see the list of routes in api and test their operation.
 
 ## Author
 
-* **Igor Moraes** - *All work* - [igorsgm](https://github.com/igorsgn)
+* **Igor Moraes** - *All work* - [igorsgm](https://github.com/igorsgm)
