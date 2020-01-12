@@ -1,17 +1,17 @@
-# Codeline Laravel Films
+# Laravel Films
 
-This is a test assignment of Codeline which covers RESTful API, DB, auth and form functionality in Laravel. The project consists in a Backend which implements a RESTful API to manage films. 
+This project covers RESTful API, DB, auth and form functionality in Laravel. The project consists in a Backend which implements a RESTful API to manage films. 
 
 ##### Main Screen
 
-![Codeline Laravel Films](https://raw.githubusercontent.com/igorsgm/codeline-laravel-films/master/CodelineLaravelFilms.png)
+![Laravel Films](https://raw.githubusercontent.com/igorsgm/laravel-films/master/CodelineLaravelFilms.png)
 
 ## Getting Started and Installing
 
 ```
-git clone https://github.com/igorsgm/codeline-laravel-films.git
+git clone https://github.com/igorsgm/laravel-films.git
 
-cd codeline-laravel-films
+cd laravel-films
 
 composer install
 ```
@@ -39,10 +39,10 @@ If you want to see a complete list of existent routes inside the application, ru
 php artisan route:list
 ```
 
-You can also use [Postman](https://www.getpostman.com/) ( a complete API development environment, for API developers) by importing [postman_collection.json](https://github.com/igorsgm/codeline-laravel-films/blob/master/postman_collection.json) after downloading the program.
+You can also use [Postman](https://www.getpostman.com/) ( a complete API development environment, for API developers) by importing [postman_collection.json](https://github.com/igorsgm/laravel-films/blob/master/postman_collection.json) after downloading the program.
 By doing this, you can see the list of routes in api and test their operation.
 
-![API Routes](https://raw.githubusercontent.com/igorsgm/codeline-laravel-films/master/CodelineLaravelFilms-routes.png) 
+![API Routes](https://raw.githubusercontent.com/igorsgm/laravel-films/master/CodelineLaravelFilms-routes.png) 
 
 ## Built With
 
